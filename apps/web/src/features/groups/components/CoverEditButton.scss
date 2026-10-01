@@ -1,0 +1,24 @@
+.cover-edit-btn {
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #ffb74d 0%, #48D1CC 100%);
+  border: none;
+  border-radius: 40px;
+  color: #1a1a2e;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    color: white;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}

@@ -1,0 +1,396 @@
+// AdminPages.scss
+.admin-page {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #c1cd78;
+  }
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+
+  .stat-box {
+    background: #0e4420;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+
+    h3 {
+      font-size: 1rem;
+      color: #d5e4c3;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #c1cd78;
+    }
+  }
+}
+
+.admin-section {
+  background: #0e4420;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: #c1cd78;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #083b38;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    margin: 1.5rem 0 1rem;
+    color: #444;
+  }
+
+  input, select {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+
+    &:focus {
+      outline: none;
+      border-color: #0077cc;
+    }
+  }
+
+  button {
+    background: #0077cc;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-right: 0.5rem;
+    transition: background 0.2s;
+
+    &:hover {
+      background: #005fa3;
+    }
+
+    &.delete-btn {
+      background: #dc3545;
+
+      &:hover {
+        background: #bb2d3b;
+      }
+    }
+  }
+}
+
+.shop-items-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+
+  th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #083b38;
+  }
+
+  th {
+    background: #e6f2b0;
+    font-weight: 600;
+  }
+
+  img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+}
+
+.interest-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+
+  th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #e6f2b0;
+  }
+
+  th {
+    background: #e6f2b0;
+    font-weight: 600;
+  }
+}
+
+.reports-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+
+  .report-card {
+    background: #0e4420;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #dc3545;
+
+    .report-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+
+      .reporter {
+        font-weight: 600;
+        color: #c1cd78;
+      }
+
+      .report-date {
+        color: #d5e4c3;
+        font-size: 0.85rem;
+      }
+    }
+
+    .report-meta {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.85rem;
+
+      .report-type {
+        background: #d5e4c3;
+        color: #0e4420;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-weight: 600;
+      }
+
+      .report-id {
+        color: #c1cd78;
+      }
+    }
+
+    .report-content {
+      p {
+        margin: 0;
+        color: #c1cd78;
+      }
+    }
+  }
+}
+
+.content-section {
+  background: #0e4420;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: #c1cd78;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #083b38;
+  }
+}
+
+.moderation-item {
+  background: #e6f2b0;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+
+  p {
+    color: #0e4420;
+  }
+
+  blockquote {
+    margin: 0.5rem 0;
+    padding: 0.5rem 1rem;
+    background: #0e4420;
+    color: #c1cd78;
+    border-left: 3px solid #0077cc;
+    font-style: italic;
+
+    &.parent-post {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+  }
+
+  .actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+}
+
+/* === Styles bổ sung riêng cho ContentManagementPage === */
+.content-section {
+  .moderation-item {
+    border: 1px solid #c1cd78;
+
+    button {
+      background: #0077cc;
+      color: #e6f2b0;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.2s;
+
+      &:hover {
+        background: #005fa3;
+      }
+
+      &.secondary {
+        background: #dc3545;
+
+        &:hover {
+          background: #bb2d3b;
+        }
+      }
+    }
+  }
+
+  .reports-grid {
+    .report-card {
+      transition: transform 0.2s, box-shadow 0.2s;
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      }
+    }
+  }
+}
+
+/* === Styles riêng cho UserManagementPage === */
+.admin-table-container {
+  background: #0e4420;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #d5e4c3;
+
+    th, td {
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    th {
+      background: #c1cd78;
+      color: #0e4420;
+      font-weight: bold;
+    }
+
+    tr:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .role-badge {
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+
+      &.user {
+        background: #d5e4c3;
+        color: #0e4420;
+      }
+
+      &.moderator {
+        background: #0077cc;
+        color: #e6f2b0;
+      }
+
+      &.admin {
+        background: #dc3545;
+        color: #e6f2b0;
+      }
+    }
+
+    .status-badge {
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+
+      &.active {
+        background: #28a745;
+        color: #e6f2b0;
+      }
+
+      &.suspended {
+        background: #ffc107;
+        color: #0e4420;
+      }
+
+      &.banned {
+        background: #dc3545;
+        color: #e6f2b0;
+      }
+    }
+
+    .actions-cell {
+      button {
+        background: #0077cc;
+        color: #e6f2b0;
+        border: none;
+        padding: 0.4rem 0.75rem;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        margin-right: 0.3rem;
+        cursor: pointer;
+        transition: background 0.2s;
+
+        &:hover {
+          background: #005fa3;
+        }
+
+        &:nth-child(3) {
+          background: #dc3545;
+
+          &:hover {
+            background: #bb2d3b;
+          }
+        }
+
+        &:last-child {
+          background: #28a745;
+
+          &:hover {
+            background: #1e7e34;
+          }
+        }
+      }
+    }
+  }
+}

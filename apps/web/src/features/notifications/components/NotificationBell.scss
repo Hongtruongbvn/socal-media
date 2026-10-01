@@ -1,0 +1,162 @@
+.notification-bell {
+  position: relative;
+
+  button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #cbd5e1;
+    position: relative;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+    &:hover {
+      color: #ffb74d;
+      transform: translateY(-2px);
+      background: rgba(255, 183, 77, 0.1);
+    }
+  }
+
+  .badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background: #dc2626;
+    color: white;
+    border-radius: 50%;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    font-size: 10px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .notification-dropdown {
+    position: absolute;
+    top: 120%;
+    right: 0;
+    width: 380px;
+    max-width: 90vw;
+    background: #334155;
+    border: 1px solid #475569;
+    border-radius: 20px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+    max-height: 480px;
+    overflow-y: auto;
+    z-index: 1000;
+    animation: dropdownFadeIn 0.2s ease;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #1e293b;
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #48D1CC;
+      border-radius: 10px;
+    }
+  }
+
+  .notification-item {
+    padding: 16px;
+    border-bottom: 1px solid #475569;
+    transition: all 0.2s;
+
+    &:hover {
+      background: #1e293b;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .line {
+      color: #cbd5e1;
+      font-size: 14px;
+      line-height: 1.5;
+
+      a {
+        color: #48D1CC;
+        text-decoration: none;
+        font-weight: 500;
+
+        &:hover {
+          color: #ffb74d;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .btn-accept {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: white;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 40px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13px;
+      transition: all 0.2s;
+
+      &:hover {
+        transform: translateY(-2px);
+        color: white;
+      }
+    }
+
+    .btn-decline {
+      background: rgba(220, 38, 38, 0.2);
+      color: #f87171;
+      border: 1px solid rgba(220, 38, 38, 0.3);
+      padding: 8px 18px;
+      border-radius: 40px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13px;
+      transition: all 0.2s;
+
+      &:hover {
+        background: #dc2626;
+        color: white;
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  .empty-notification {
+    padding: 40px;
+    text-align: center;
+    color: #94a3b8;
+    font-size: 14px;
+  }
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

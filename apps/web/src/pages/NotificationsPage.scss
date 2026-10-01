@@ -1,0 +1,198 @@
+.notifications-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px;
+  background: #1e293b;
+  min-height: 100vh;
+
+  .section-container {
+    margin-bottom: 32px;
+    background: #334155;
+    padding: 20px;
+    border-radius: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #e2e2e2;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #475569;
+
+    .clear-all {
+      font-size: 13px;
+      color: #f87171;
+      cursor: pointer;
+      padding: 6px 14px;
+      border-radius: 40px;
+      background: rgba(220, 38, 38, 0.2);
+      transition: all 0.2s;
+
+      &:hover {
+        background: #dc2626;
+        color: white;
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  .empty-message {
+    text-align: center;
+    padding: 40px;
+    color: #94a3b8;
+    font-style: italic;
+  }
+
+  .notification-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .notification-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+    background: #1e293b;
+    border-radius: 20px;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: 1px solid #475569;
+
+    &:hover {
+      transform: translateX(4px);
+      background: #1e2a3a;
+      border-color: #48D1CC;
+    }
+
+    &.unread {
+      background: #1e2a3a;
+      border-left: 4px solid #48D1CC;
+    }
+
+    &.warning-item {
+      background: #1e293b;
+      border-left: 4px solid #dc2626;
+    }
+
+    img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid #48D1CC;
+    }
+
+    .notification-content {
+      flex: 1;
+
+      .notification-text {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 14px;
+        line-height: 1.4;
+        color: #cbd5e1;
+      }
+
+      .notification-time {
+        color: #94a3b8;
+        font-size: 12px;
+        display: block;
+      }
+
+      .notification-reason {
+        margin-top: 8px;
+        font-size: 13px;
+        color: #cbd5e1;
+        padding: 8px 12px;
+        background: #1e293b;
+        border-radius: 16px;
+        border: 1px solid #475569;
+      }
+    }
+
+    .notification-actions {
+      display: flex;
+      gap: 8px;
+
+      button {
+        background: none;
+        border: none;
+        padding: 8px;
+        cursor: pointer;
+        color: #94a3b8;
+        border-radius: 40px;
+        transition: all 0.2s;
+
+        &:hover {
+          background: rgba(220, 38, 38, 0.2);
+          color: #f87171;
+          transform: translateY(-2px);
+        }
+      }
+    }
+
+    .warning-details {
+      margin: 10px 0;
+      padding: 12px;
+      background: #1e293b;
+      border-radius: 16px;
+      font-size: 13px;
+      border: 1px solid #475569;
+
+      .post-content-preview {
+        padding: 10px;
+        background: #334155;
+        border-radius: 12px;
+        margin-top: 8px;
+        border-left: 3px solid #48D1CC;
+      }
+    }
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+
+    button {
+      padding: 6px 16px;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.2s;
+
+      &.accept-btn {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: white;
+
+        &:hover {
+          transform: translateY(-2px);
+          color: white;
+        }
+      }
+
+      &.reject-btn {
+        background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        color: white;
+
+        &:hover {
+          transform: translateY(-2px);
+          color: white;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,135 @@
+@use 'sass:color';
+
+.auth-page {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1e293b;
+  padding: 20px;
+}
+
+.card {
+  width: 100%;
+  max-width: 900px;
+  min-height: 600px;
+  display: flex;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  background-color: #334155;
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.left {
+  flex: 1;
+  background: linear-gradient(rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95)),
+    url("https://images.pexels.com/photos/3228727/pexels-photo-3228727.jpeg?auto=compress&cs=tinysrgb&w=1600")
+      center / cover no-repeat;
+  padding: 50px;
+  color: #e2e2e2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+
+  h1 { 
+    font-size: 48px; 
+    line-height: 1.2; 
+    font-weight: 700;
+    background: linear-gradient(135deg, #ffb74d 0%, #48D1CC 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  p { 
+    font-size: 16px; 
+    color: #cbd5e1;
+  }
+  button {
+    padding: 12px 25px;
+    border: 2px solid #ffb74d;
+    background-color: transparent;
+    color: #ffb74d;
+    font-weight: bold;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: linear-gradient(135deg, #ffb74d 0%, #48D1CC 100%);
+      color: white;
+      transform: translateY(-2px);
+      border-color: transparent;
+    }
+  }
+}
+
+.right {
+  flex: 1;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+
+  h2 { 
+    color: #e2e2e2; 
+    font-size: 32px; 
+    font-weight: 600;
+    text-align: center;
+  }
+  form { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 25px; 
+  }
+
+  .form-footer {
+    margin-top: 20px;
+    text-align: center;
+    color: #94a3b8;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+
+    .link {
+      color: #48D1CC;
+      font-weight: 600;
+      text-decoration: none;
+      
+      &:hover {
+        color: #ffb74d;
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  .form-message {
+    color: #48D1CC;
+    font-size: 16px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .card { 
+    flex-direction: column; 
+    min-height: auto; 
+    width: 95%; 
+    max-width: 500px; 
+  }
+  .left { 
+    display: none; 
+  }
+  .right { 
+    flex: 1; 
+  }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}

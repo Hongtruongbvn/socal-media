@@ -1,0 +1,72 @@
+.cover-avatar-edit-menu {
+  position: relative;
+  display: inline-block;
+
+  .edit-trigger-btn {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #ffb74d 0%, #48D1CC 100%);
+    border: none;
+    border-radius: 40px;
+    color: #1a1a2e;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    &:hover {
+      transform: translateY(-2px);
+      color: white;
+    }
+  }
+
+  .edit-dropdown {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    right: 0;
+    background: #334155;
+    border: 1px solid #475569;
+    border-radius: 16px;
+    padding: 8px;
+    min-width: 160px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    &__item {
+      padding: 10px 16px;
+      background: #1e293b;
+      border: none;
+      border-radius: 12px;
+      color: #e2e2e2;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: left;
+
+      &:hover:not(:disabled) {
+        background: #475569;
+        transform: translateY(-2px);
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .edit-menu__backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 90;
+  }
+}

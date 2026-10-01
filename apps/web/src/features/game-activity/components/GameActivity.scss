@@ -1,0 +1,216 @@
+.game-activity {
+  .section-title {
+    font-size: 14px;
+    color: #94a3b8;
+    margin: 0 0 12px;
+    font-weight: 600;
+  }
+
+  .currently-playing {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px;
+    background: #1e293b;
+    border-radius: 20px;
+    border: 1px solid #475569;
+    transition: all 0.2s;
+
+    &:hover {
+      border-color: #48D1CC;
+      transform: translateY(-2px);
+    }
+
+    .cover {
+      width: 56px;
+      height: 72px;
+      object-fit: cover;
+      border-radius: 12px;
+      flex-shrink: 0;
+      border: 1px solid #475569;
+    }
+
+    .cover-fallback {
+      background: #1e293b;
+      border: 1px solid #475569;
+    }
+
+    .info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .name {
+      flex: 1;
+      min-width: 0;
+      font-size: 15px;
+      font-weight: 700;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #e2e2e2;
+    }
+
+    .btn-link {
+      background: transparent;
+      border: none;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #48D1CC;
+      border-radius: 40px;
+      transition: all 0.2s;
+
+      &:hover {
+        background: #334155;
+        transform: translateY(-2px);
+        color: #ffb74d;
+      }
+    }
+
+    .clear-btn {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      width: 24px;
+      height: 24px;
+      line-height: 22px;
+      text-align: center;
+      border-radius: 50%;
+      border: 1px solid #475569;
+      background: #1e293b;
+      color: #94a3b8;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover {
+        background: #dc2626;
+        color: white;
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  .game-search {
+    position: relative;
+
+    input {
+      width: 100%;
+      background: #1e293b;
+      border: 1px solid #475569;
+      border-radius: 40px;
+      padding: 12px 16px;
+      color: #e2e2e2;
+      font-size: 14px;
+      transition: all 0.2s;
+
+      &:focus {
+        outline: none;
+        border-color: #48D1CC;
+        box-shadow: 0 0 0 3px rgba(72, 209, 204, 0.2);
+      }
+    }
+
+    .search-hint {
+      margin-top: 8px;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    .search-results {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #334155;
+      border: 1px solid #475569;
+      border-radius: 20px;
+      max-height: 300px;
+      overflow-y: auto;
+      margin-top: 8px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: #1e293b;
+        border-radius: 10px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #48D1CC;
+        border-radius: 10px;
+      }
+    }
+
+    .search-result-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover {
+        background: #1e293b;
+        transform: translateX(4px);
+      }
+
+      img {
+        width: 36px;
+        height: 48px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+
+      .cover-fallback.small {
+        width: 36px;
+        height: 48px;
+        border-radius: 8px;
+        background: #1e293b;
+        border: 1px solid #475569;
+      }
+
+      span {
+        color: #e2e2e2;
+        font-size: 14px;
+        font-weight: 500;
+      }
+    }
+
+    .search-actions {
+      margin-top: 12px;
+
+      .btn {
+        padding: 8px 20px;
+        font-size: 13px;
+        border-radius: 40px;
+        background: #1e293b;
+        border: 1px solid #475569;
+        color: #cbd5e1;
+        cursor: pointer;
+        transition: all 0.2s;
+
+        &:hover {
+          background: #475569;
+          transform: translateY(-2px);
+          color: white;
+        }
+      }
+    }
+  }
+}
