@@ -1,135 +1,236 @@
-# Turborepo starter
+# Social Network
 
-This Turborepo starter is maintained by the Turborepo core team.
+Ứng dụng mạng xã hội cho phép chia sẻ hoạt động và tham gia các nhóm dựa trên sở thích. Người dùng đăng bài (video, ảnh), bình luận, thả cảm xúc, kết bạn, theo dõi nhau, tham gia nhóm và nhắn tin trực tiếp theo thời gian thực.
 
-## Using this example
+Dự án gồm backend (NestJS), ứng dụng web (React) và ứng dụng mobile (React Native).
 
-Run the following command:
+## Mục lục
 
-```sh
-npx create-turbo@latest
+- [Kiến trúc](#kiến-trúc)
+- [Tính năng](#tính-năng)
+- [Phân quyền](#phân-quyền)
+- [Điểm nổi tiếng](#điểm-nổi-tiếng)
+- [Công nghệ](#công-nghệ)
+- [Bắt đầu](#bắt-đầu)
+- [Biến môi trường](#biến-môi-trường)
+- [Scripts](#scripts)
+- [Triển khai](#triển-khai)
+- [Định hướng phát triển](#định-hướng-phát-triển)
+- [Phân công](#phân-công)
+
+## Kiến trúc
+
+| Ứng dụng | Mô tả |
+| --- | --- |
+| `api/` | Backend REST API và WebSocket (NestJS, MongoDB) |
+| `web/` | Ứng dụng web (React, Vite) |
+| `mobile/` | Ứng dụng mobile (React Native, Expo), chuyển đổi từ bản web |
+
+Web và mobile cùng gọi tới API qua REST, tin nhắn trực tiếp đi qua Socket.IO.
+
+## Tính năng
+
+### Bài viết
+- Đăng bài với 3 dạng nội dung: **video**, **một ảnh** hoặc **nhiều ảnh**.
+- Mỗi bài có trạng thái hiển thị: **chỉ mình tôi**, **bạn bè** hoặc **mọi người**.
+- Bình luận bài viết và thả cảm xúc.
+
+### Bạn bè và theo dõi
+- Kết bạn và quản lý danh sách bạn bè.
+- Theo dõi (follow) người dùng khác.
+
+### Nhóm
+- Tạo và tham gia nhóm.
+- Hoạt động trong nhóm, quản lý bởi admin nhóm (xem [Phân quyền](#phân-quyền)).
+
+### Nhắn tin
+- Nhắn tin trực tiếp theo thời gian thực bằng **Socket.IO**.
+
+### Thông báo
+- Thông báo cho người dùng khi có hoạt động liên quan.
+
+### Thanh toán
+- Thanh toán qua **Stripe**.
+
+### Quản trị
+- Admin hệ thống quản lý người dùng, thực hiện **ban** và **cấm** tài khoản.
+
+## Phân quyền
+
+Hệ thống phân quyền ở hai cấp.
+
+**Cấp hệ thống (khi đăng nhập)**
+
+| Vai trò | Quyền |
+| --- | --- |
+| Admin hệ thống | Quản lý người dùng, ban và cấm tài khoản |
+| Người dùng | Sử dụng các tính năng của mạng xã hội |
+
+**Cấp nhóm**
+
+| Vai trò | Quyền |
+| --- | --- |
+| Admin nhóm | Toàn quyền trong nhóm |
+| Thành viên | Tham gia và hoạt động trong nhóm |
+
+## Điểm nổi tiếng
+
+Mỗi người dùng có một điểm nổi tiếng được tính từ hoạt động của họ: đăng bài, thích bài, bình luận và theo dõi người khác. Nguồn điểm lớn nhất đến từ **số người theo dõi (follower)** mà người dùng đạt được.
+
+## Công nghệ
+
+| Thành phần | Công nghệ |
+| --- | --- |
+| Backend | NestJS 11, MongoDB + Mongoose 8, Passport + JWT, Socket.IO, class-validator |
+| Thanh toán | Stripe |
+| Email | Nodemailer (SMTP) |
+| Web | React 19, Vite 7, TypeScript, React Router 7, TanStack Query, Socket.IO client, Sass |
+| Mobile | React Native, Expo, TypeScript, TanStack Query, Socket.IO client, React Native Paper |
+| Tiến trình | PM2 |
+
+## Bắt đầu
+
+### Yêu cầu
+
+- Node.js 20 trở lên
+- npm
+- MongoDB
+
+### Cài đặt
+
+```bash
+git clone https://github.com/Hongtruongbvn/socal-media.git
+cd socal-media
 ```
 
-## What's inside?
+### Backend
 
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build
-yarn dlx turbo build
-pnpm exec turbo build
+```bash
+cd api
+npm install
+# tạo file .env theo mục "Biến môi trường"
+npm run start:dev
 ```
 
-You can build a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+API chạy tại `http://localhost:8888/api`.
 
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build --filter=docs
+Nạp dữ liệu mẫu (tùy chọn):
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build --filter=docs
-yarn exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
+```bash
+npm run seed
 ```
 
-### Develop
+### Web
 
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev
-yarn exec turbo dev
-pnpm exec turbo dev
+```bash
+cd web
+npm install
+# tạo file .env theo mục "Biến môi trường"
+npm run dev
 ```
 
-You can develop a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+### Mobile
 
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev --filter=web
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev --filter=web
-yarn exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
+```bash
+cd mobile
+npm install
+# tạo file .env theo mục "Biến môi trường"
+npm start
 ```
 
-### Remote Caching
+Sau khi chạy `npm start`, mở ứng dụng trên thiết bị hoặc giả lập (`npm run android` / `npm run ios`).
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+## Biến môi trường
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+> Các giá trị dạng `YOUR_...` là ví dụ. Hãy thay bằng giá trị của bạn và **không commit file `.env` lên GitHub**.
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+### API (`api/.env`)
 
-```
-cd my-turborepo
+```dotenv
+# Email
+MAIL_USER=YOUR_EMAIL
+MAIL_HOST=smtp.gmail.com
+MAIL_PASS=YOUR_APP_PASSWORD
+MAIL_FROM="YOUR_APP_NAME" <YOUR_EMAIL>
 
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo login
+# Database
+MONGO_URI=YOUR_MONGO_URI                  # ví dụ: mongodb://localhost:27017/YOUR_DB_NAME
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo login
-yarn exec turbo login
-pnpm exec turbo login
-```
+# Xác thực
+JWT_SECRET=YOUR_JWT_SECRET
+JWT_EXPIRES_IN=1d
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+# URL của API
+API_URL=YOUR_API_URL                      # ví dụ: http://localhost:8888/api
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo link
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo link
-yarn exec turbo link
-pnpm exec turbo link
+# Stripe (backend dùng secret key)
+STRIPE_SECRET_KEY=YOUR_STRIPE_SECRET_KEY
 ```
 
-## Useful Links
+### Web (`web/.env`)
 
-Learn more about the power of Turborepo:
+```dotenv
+VITE_API_BASE_URL=YOUR_API_BASE_URL       # ví dụ: http://localhost:8888/api
+VITE_API_STATIC_URL=YOUR_STATIC_URL       # ví dụ: http://localhost:8888
+VITE_STRIPE_PUBLISHABLE_KEY=YOUR_STRIPE_PUBLISHABLE_KEY
+```
 
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+### Mobile (`mobile/.env`)
+
+```dotenv
+VITE_API_BASE_URL=YOUR_API_BASE_URL       # ví dụ: http://YOUR_LOCAL_IP:8888/api
+VITE_API_STATIC_URL=YOUR_STATIC_URL       # ví dụ: http://YOUR_LOCAL_IP:8888
+VITE_STRIPE_PUBLISHABLE_KEY=YOUR_STRIPE_PUBLISHABLE_KEY
+API_URL=YOUR_API_BASE_URL                 # ví dụ: http://YOUR_LOCAL_IP:8888/api
+```
+
+> Khi chạy mobile trên thiết bị thật, dùng địa chỉ IP trong mạng LAN của máy đang chạy API (không dùng `localhost`).
+
+## Scripts
+
+### API
+
+| Lệnh | Mô tả |
+| --- | --- |
+| `npm run start:dev` | Chạy chế độ phát triển (watch) |
+| `npm run build` | Build |
+| `npm run start:prod` | Chạy bản build |
+| `npm run seed` | Nạp dữ liệu mẫu |
+
+### Web
+
+| Lệnh | Mô tả |
+| --- | --- |
+| `npm run dev` | Chạy chế độ phát triển |
+| `npm run build` | Build |
+| `npm run preview` | Xem thử bản build |
+| `npm run lint` | Kiểm tra lint |
+
+### Mobile
+
+| Lệnh | Mô tả |
+| --- | --- |
+| `npm start` | Chạy Expo |
+| `npm run android` | Chạy trên Android |
+| `npm run ios` | Chạy trên iOS |
+
+## Triển khai
+
+Backend được chạy bằng **PM2**:
+
+```bash
+cd api
+npm run build
+pm2 start dist/main.js --name social-api
+```
+
+## Định hướng phát triển
+
+- Mở rộng các tính năng giao tiếp cộng đồng theo hướng Discord (hiện mới là định hướng, chưa triển khai).
+
+## Phân công
+
+**Phạm Hồng Trưởng** (Trưởng nhóm)
+- **Backend:** xử lý toàn bộ logic bạn bè, hoạt động trong nhóm, thanh toán, thông báo và quản trị người dùng (ban, cấm).
+- **Cơ sở dữ liệu:** thiết kế cơ sở dữ liệu.
+- **Mobile:** thực hiện toàn bộ ứng dụng mobile, chuyển đổi từ bản web React sang React Native.
